@@ -14,9 +14,15 @@ dependencies:
   '@nestjs/platform-express':
     specifier: ^10.0.0
     version: 10.4.1(@nestjs/common@10.4.1)(@nestjs/core@10.4.1)
+  '@nestjs/serve-static':
+    specifier: ^4.0.2
+    version: 4.0.2(@nestjs/common@10.4.1)(@nestjs/core@10.4.1)
   '@nestjs/typeorm':
     specifier: ^10.0.2
     version: 10.0.2(@nestjs/common@10.4.1)(@nestjs/core@10.4.1)(reflect-metadata@0.2.2)(rxjs@7.8.1)(typeorm@0.3.20)
+  multer:
+    specifier: 1.4.5-lts.1
+    version: 1.4.5-lts.1
   mysql:
     specifier: ^2.18.1
     version: 2.18.1
@@ -26,6 +32,12 @@ dependencies:
   rxjs:
     specifier: ^7.8.1
     version: 7.8.1
+  serve-static:
+    specifier: ^1.15.0
+    version: 1.15.0
+  streamifier:
+    specifier: ^0.1.1
+    version: 0.1.1
   typeorm:
     specifier: ^0.3.20
     version: 0.3.20(ts-node@10.9.2)
@@ -983,6 +995,27 @@ packages:
     transitivePeerDependencies:
       - chokidar
     dev: true
+
+  /@nestjs/serve-static@4.0.2(@nestjs/common@10.4.1)(@nestjs/core@10.4.1):
+    resolution: {integrity: sha512-cT0vdWN5ar7jDI2NKbhf4LcwJzU4vS5sVpMkVrHuyLcltbrz6JdGi1TfIMMatP2pNiq5Ie/uUdPSFDVaZX/URQ==}
+    peerDependencies:
+      '@fastify/static': ^6.5.0 || ^7.0.0
+      '@nestjs/common': ^9.0.0 || ^10.0.0
+      '@nestjs/core': ^9.0.0 || ^10.0.0
+      express: ^4.18.1
+      fastify: ^4.7.0
+    peerDependenciesMeta:
+      '@fastify/static':
+        optional: true
+      express:
+        optional: true
+      fastify:
+        optional: true
+    dependencies:
+      '@nestjs/common': 10.4.1(reflect-metadata@0.2.2)(rxjs@7.8.1)
+      '@nestjs/core': 10.4.1(@nestjs/common@10.4.1)(@nestjs/platform-express@10.4.1)(reflect-metadata@0.2.2)(rxjs@7.8.1)
+      path-to-regexp: 0.2.5
+    dev: false
 
   /@nestjs/testing@10.4.1(@nestjs/common@10.4.1)(@nestjs/core@10.4.1)(@nestjs/platform-express@10.4.1):
     resolution: {integrity: sha512-pR+su5+YGqCLH0RhhVkPowQK7FCORU0/PWAywPK7LScAOtD67ZoviZ7hAU4vnGdwkg4HCB0D7W8Bkg19CGU8Xw==}
@@ -3926,6 +3959,19 @@ packages:
       type-is: 1.6.18
       xtend: 4.0.2
 
+  /multer@1.4.5-lts.1:
+    resolution: {integrity: sha512-ywPWvcDMeH+z9gQq5qYHCCy+ethsk4goepZ45GLD63fOu0YcNecQxi64nDs3qluZB+murG3/D4dJ7+dGctcCQQ==}
+    engines: {node: '>= 6.0.0'}
+    dependencies:
+      append-field: 1.0.0
+      busboy: 1.6.0
+      concat-stream: 1.6.2
+      mkdirp: 0.5.6
+      object-assign: 4.1.1
+      type-is: 1.6.18
+      xtend: 4.0.2
+    dev: false
+
   /mute-stream@0.0.8:
     resolution: {integrity: sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==}
     dev: true
@@ -4163,6 +4209,10 @@ packages:
 
   /path-to-regexp@0.1.7:
     resolution: {integrity: sha512-5DFkuoqlv1uYQKxy8omFBeJPQcdoE07Kv2sferDCrAq1ohOU+MSDswDIbnx3YAM60qIOnYa53wBhXW0EbMonrQ==}
+
+  /path-to-regexp@0.2.5:
+    resolution: {integrity: sha512-l6qtdDPIkmAmzEO6egquYDfqQGPMRNGjYtrU13HAXb3YSRrt7HSb1sJY0pKp6o2bAa86tSB6iwaW2JbthPKr7Q==}
+    dev: false
 
   /path-to-regexp@3.2.0:
     resolution: {integrity: sha512-jczvQbCUS7XmS7o+y1aEO9OBVFeZBQ1MDSEqmO7xSoPgOPoowY/SxLpZ6Vh97/8qHZOteiCKb7gkG9gA2ZUxJA==}
@@ -4593,6 +4643,11 @@ packages:
   /statuses@2.0.1:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
     engines: {node: '>= 0.8'}
+
+  /streamifier@0.1.1:
+    resolution: {integrity: sha512-zDgl+muIlWzXNsXeyUfOk9dChMjlpkq0DRsxujtYPgyJ676yQ8jEm6zzaaWHFDg5BNcLuif0eD2MTyJdZqXpdg==}
+    engines: {node: '>=0.10'}
+    dev: false
 
   /streamsearch@1.1.0:
     resolution: {integrity: sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==}
