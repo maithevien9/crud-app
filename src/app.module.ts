@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { TaskModule } from './task/task.module';
 import { FileUploadModule } from './file/file.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
@@ -22,7 +21,7 @@ import { join } from 'path';
     //   entities: [__dirname + '/**/*.entity{.ts,.js}'],
     //   synchronize: true,
     // }),
-    TaskModule,
+    // TaskModule,
     FileUploadModule,
   ],
   controllers: [AppController],

@@ -5,10 +5,11 @@ import {
   Post,
   UseInterceptors,
   UploadedFile,
+  UploadedFiles,
 } from '@nestjs/common';
-import { FileInterceptor } from '@nestjs/platform-express';
+import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 
-@Controller('upload')
+@Controller('uploads')
 export class FileUploadController {
   constructor(private readonly fileUploadService: FileUploadService) {}
 
@@ -21,5 +22,12 @@ export class FileUploadController {
   async uploadFile(@UploadedFile() file: File) {
     const url = await this.fileUploadService.uploadFile(file);
     return { url };
+  }
+
+  @Post('multiple')
+  @UseInterceptors(FilesInterceptor('files', 10))
+  async uploadMultipleFiles(@UploadedFiles() files: File[]) {
+    const urls = await this.fileUploadService.uploadMultipleFiles(files);
+    return { urls };
   }
 }

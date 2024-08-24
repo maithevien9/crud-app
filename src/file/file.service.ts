@@ -8,7 +8,7 @@ import { join } from 'path';
 export class FileUploadService {
   async uploadFile(file: File): Promise<string> {
     const { originalname, buffer } = file;
-    const filePath = join(__dirname, '..', 'uploads', originalname);
+    const filePath = join(__dirname, '..', '..', 'uploads', originalname);
     const writeStream = createWriteStream(filePath);
 
     await new Promise((resolve, reject) => {
@@ -19,5 +19,10 @@ export class FileUploadService {
     });
 
     return filePath;
+  }
+
+  async uploadMultipleFiles(files: File[]): Promise<string[]> {
+    const uploadPromises = files.map((file) => this.uploadFile(file));
+    return Promise.all(uploadPromises);
   }
 }
