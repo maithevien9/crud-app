@@ -3,7 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import nodemailer from 'nodemailer';
 import { AllConfigType } from 'src/config/config.type';
 import Handlebars from 'handlebars';
-import fs from 'node:fs/promises';
+import * as fs from 'node:fs/promises';
 import { IMailerService } from './mailer';
 
 @Injectable()
@@ -46,6 +46,7 @@ export class MailerService implements IMailerService {
         strict: true,
       })(context);
     }
+    return;
 
     await this.transporter.sendMail({
       ...mailOptions,

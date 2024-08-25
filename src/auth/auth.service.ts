@@ -10,7 +10,7 @@ import { Services } from 'src/utils/constants';
 import { AuthEmailLoginDto } from './dtos/auth-email-login.dto';
 import { LoginResponseType } from './types/login-response.type';
 import { AuthProvidersEnum } from './enums/auth-providers.enum';
-import crypto from 'crypto';
+import * as crypto from 'crypto';
 
 import { User, UserStatus } from 'src/users/entities/user.entity';
 import { ISessionService } from 'src/session/session';
@@ -18,6 +18,7 @@ import { Session } from 'src/session/entities/session.entity';
 import { ConfigService } from '@nestjs/config';
 import { AllConfigType } from 'src/config/config.type';
 import ms from 'ms';
+
 import { JwtService } from '@nestjs/jwt';
 import { IAuthService } from './auth';
 import { AuthRegisterDto } from './dtos/auth-register.dto';
@@ -178,6 +179,8 @@ export class AuthService implements IAuthService {
       .createHash('sha256')
       .update(randomStringGenerator())
       .digest('hex');
+
+    console.log({ hash });
 
     await this.usersService.createUser({
       ...registerDto,

@@ -5,7 +5,7 @@ import { ConfigService } from '@nestjs/config';
 import { AllConfigType } from 'src/config/config.type';
 import { IMailsService } from './mails';
 import { MailData } from './types/mails.type';
-import path from 'path';
+import * as path from 'path';
 
 @Injectable()
 export class MailsService implements IMailsService {
