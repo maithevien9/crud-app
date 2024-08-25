@@ -10,8 +10,6 @@ import { IMailerService } from './mailer';
 export class MailerService implements IMailerService {
   private readonly transporter: nodemailer.Transporter;
   constructor(private readonly configService: ConfigService<AllConfigType>) {
-    return;
-
     this.transporter = nodemailer.createTransport({
       host: configService.get<string>('mailer.host', { infer: true }),
       port: configService.get<number>('mailer.port', { infer: true }),
@@ -46,7 +44,6 @@ export class MailerService implements IMailerService {
         strict: true,
       })(context);
     }
-    return;
 
     await this.transporter.sendMail({
       ...mailOptions,

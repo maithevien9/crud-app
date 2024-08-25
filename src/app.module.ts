@@ -7,13 +7,13 @@ import { DataSource, DataSourceOptions } from 'typeorm';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { SessionModule } from './session/session.module';
-// import { MailerModule } from './mailer/mailer.module';
-// import { MailsModule } from './mails/mails.module';
+import { MailerModule } from './mailer/mailer.module';
+import { MailsModule } from './mails/mails.module';
 import { ForgotPasswordModule } from './forgot-password/forgot-password.module';
 // import { AuthGoogleModule } from './auth-google/auth-google.module';
 import appConfig from './config/app.config';
 import authConfig from './config/auth.config';
-// import mailerConfig from './config/mailer.config';
+import mailerConfig from './config/mailer.config';
 // import googleConfig from './config/google.config';
 
 @Module({
@@ -21,7 +21,7 @@ import authConfig from './config/auth.config';
     ConfigModule.forRoot({
       isGlobal: true,
       // load: [databaseConfig, appConfig, authConfig, mailerConfig, googleConfig],
-      load: [databaseConfig, appConfig, authConfig],
+      load: [databaseConfig, appConfig, authConfig, mailerConfig],
       envFilePath: ['.env'],
     }),
     TypeOrmModule.forRootAsync({
@@ -34,8 +34,8 @@ import authConfig from './config/auth.config';
     UsersModule,
     AuthModule,
     SessionModule,
-    // MailerModule,
-    // MailsModule,
+    MailerModule,
+    MailsModule,
     ForgotPasswordModule,
     // AuthGoogleModule,
   ],
