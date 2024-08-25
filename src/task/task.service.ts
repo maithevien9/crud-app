@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { Task } from './task.entity/task.entity' 
+import { Task } from './task.entity/task.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { UpdateResult, DeleteResult } from  'typeorm';
+import { UpdateResult, DeleteResult } from 'typeorm';
 
 @Injectable()
 export class TaskService {
@@ -11,17 +11,16 @@ export class TaskService {
     private readonly taskRepo: Repository<Task>,
   ) {}
 
-  async findAll (): Promise<Task[]> {
+  async findAll(): Promise<Task[]> {
     return await this.taskRepo.find();
   }
 
-  async findOne (id: number): Promise<Task> {
-    return await this.taskRepo.findOne({where: { id }})
+  async findOne(id: number): Promise<Task> {
+    return await this.taskRepo.findOne({ where: { id } });
   }
 
-
-  async create (task: Task): Promise<Task> {
-    return await this.taskRepo.save(task)
+  async create(task: Task): Promise<Task> {
+    return await this.taskRepo.save(task);
   }
 
   async update(task: Task): Promise<UpdateResult> {
@@ -32,4 +31,3 @@ export class TaskService {
     return await this.taskRepo.delete(id);
   }
 }
-
