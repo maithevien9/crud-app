@@ -10,7 +10,11 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: ['http://localhost:3000'],
+    origin: [
+      'http://localhost:4000',
+      'http://localhost:3000',
+      'https://88f0-14-176-231-248.ngrok-free.app',
+    ],
     credentials: true,
   });
   const configService = app.get(ConfigService<AllConfigType>);
